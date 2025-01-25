@@ -1,13 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import { MoviesView } from '@/views/MoviesView'
-import { SessionsView } from '@/views/SessionsView';
+import { MoviesView } from '@/pages/MoviesView'
+import { SessionsView } from '@/pages/SessionsView';
 
 export enum AppRoutes {
     MOVIES = 'movies',
     SESSIONS = 'sessions'
 }
 
-export const RoutePaths: Record<AppRoutes, string> = {
+export const routePaths: Record<AppRoutes, string> = {
     [AppRoutes.MOVIES]: '/',
     [AppRoutes.SESSIONS]: '/sessions',
 }
@@ -16,12 +16,12 @@ const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
     routes: [
         {
-            path: RoutePaths.movies,
+            path: routePaths.movies,
             name: AppRoutes.MOVIES,
             component: MoviesView,
         },
         {
-            path: RoutePaths.sessions,
+            path: routePaths.sessions,
             name: AppRoutes.SESSIONS,
             component: SessionsView,
         }
