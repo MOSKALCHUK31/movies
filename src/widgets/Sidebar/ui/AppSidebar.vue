@@ -11,12 +11,6 @@
             title="Movies"
             prepend-icon="mdi-filmstrip"
         />
-        <v-list-item
-            to="/"
-            link
-            title="Sessions"
-            prepend-icon="mdi-movie-open"
-        />
     </v-navigation-drawer>
 </template>
 

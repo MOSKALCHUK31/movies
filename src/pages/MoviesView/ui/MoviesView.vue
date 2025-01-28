@@ -15,9 +15,9 @@
 import MovieSearch from './MovieSearch.vue'
 import MovieList from './MovieList.vue'
 import { onMounted } from 'vue'
-import { useHomeStore } from '@/entities/Movie/model/store.ts'
+import { useMoviesStore } from '../model/store.ts'
 
-const homeStore = useHomeStore()
+const moviesStore = useMoviesStore()
 
-onMounted(homeStore.GET_MOVIES_AND_SESSIONS)
+onMounted(moviesStore.GET_MOVIES_AND_SESSIONS)
 </script>

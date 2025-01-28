@@ -1,4 +1,4 @@
-import { MovieGenres } from '@/entities/Movie/types'
+import { MovieGenres } from '@/entities/Movie'
 
 export const genreOptions = [
     { title: 'All', value: null },

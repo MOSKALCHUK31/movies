@@ -18,16 +18,16 @@
 <script setup lang="ts">
 import { genreOptions } from '../lib'
 import { MovieGenres } from '@/entities/Movie/types'
-import { useHomeStore } from '@/entities/Movie/model/store.ts'
+import { useMoviesStore } from '../model/store.ts'
 import { debounce } from '@/shared/lib/helpers.ts'
 
-const homeStore = useHomeStore()
+const moviesStore = useMoviesStore()
 
 const onSelect = (value: MovieGenres): void => {
-    homeStore.SET_SELECTED_GENRE(value)
+    moviesStore.SET_SELECTED_GENRE(value)
 }
 
 const onInput = debounce((value: string) => {
-    homeStore.SET_PROMPT(value)
+    moviesStore.SET_PROMPT(value)
 })
 </script>

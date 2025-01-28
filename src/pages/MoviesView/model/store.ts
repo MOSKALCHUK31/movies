@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
-import { getMovies } from '../api'
+import { getMovies } from '@/entities/Movie'
 import { getSessions } from '@/entities/Session'
-import type { IMovie } from '../types'
+import type { IMovie } from '@/entities/Movie'
 import type { IMovieSessions } from '@/entities/Session'
-import { MovieGenres } from '../types'
+import { MovieGenres } from '@/entities/Movie'
 
-export const useHomeStore = defineStore('home-view-store', () => {
+export const useMoviesStore = defineStore('movies-view-store', () => {
     const movies = ref<IMovie[]>([])
     const sessions = ref<IMovieSessions | null>(null)
     const isLoading = ref(false)

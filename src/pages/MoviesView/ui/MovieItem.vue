@@ -1,5 +1,5 @@
 <template>
-    <v-card>
+    <v-card hover @click="onSelect">
         <v-img
             :src="movie.image"
             height="400"
@@ -19,6 +19,7 @@
                             <v-btn
                                 v-for="time in getTimeList(session.daytime)"
                                 :key="time"
+                                disabled
                                 rounded="xl"
                                 elevation="2"
                             >
@@ -41,7 +42,18 @@ interface IMovieItemProps {
     sessions: ISession[] | null
 }
 
-defineProps<IMovieItemProps>()
+interface IMovieItemEmits {
+    (e: 'on-click', movie: IMovie): void
+}
 
-const getTimeList = (movie: string): string[] => movie.split(';')
+const emit = defineEmits<IMovieItemEmits>()
+const props = defineProps<IMovieItemProps>()
+
+const getTimeList = (movie: string): string[] => {
+    return movie.split(';')
+}
+
+const onSelect = (): void => {
+    emit('on-click', props.movie)
+}
 </script>

@@ -14,7 +14,7 @@ const router = createRouter({
         {
             path: routePaths.home,
             name: AppRoutes.HOME,
-            component: () => import('@/pages/HomeView')
+            component: () => import('@/pages/MoviesView')
         }
     ]
 })
