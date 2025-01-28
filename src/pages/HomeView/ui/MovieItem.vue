@@ -4,7 +4,7 @@
             :src="movie.image"
             height="400"
         />
-        <v-card-title class="text-center" v-html="movie.name"/>
+        <v-card-title class="text-center text-h4 font-weight-black" v-html="movie.name"/>
         <v-card-text>
             <v-card>
                 <v-list class="text-center">
@@ -12,10 +12,10 @@
                         v-for="session in sessions"
                         :key="session.showdate"
                     >
-                        <v-list-item-title class="text-bold">
+                        <v-list-item-title class="text-h6">
                             {{ session.showdate }}
                         </v-list-item-title>
-                        <v-btn-group class="py-3">
+                        <div class="py-3 d-flex flex-wrap justify-center ga-1">
                             <v-btn
                                 v-for="time in getTimeList(session.daytime)"
                                 :key="time"
@@ -24,7 +24,7 @@
                             >
                                 {{ time }}
                             </v-btn>
-                        </v-btn-group>
+                        </div>
                     </v-list-item>
                 </v-list>
             </v-card>

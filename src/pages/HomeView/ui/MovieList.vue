@@ -1,8 +1,10 @@
 <template>
-    <v-card class="mx-4 my-2 pa-4">
-        <v-row>
+    <AppLoader v-if="isLoading" :size="70" />
+    <AppError v-else-if="!isLoading && isError" />
+    <v-row v-else>
+        <template v-if="filteredMovies.length">
             <v-col
-                v-for="movie in movies"
+                v-for="movie in filteredMovies"
                 :key="movie.id"
                 cols="6"
             >
@@ -11,17 +13,29 @@
                     :movie="movie"
                 />
             </v-col>
-        </v-row>
-    </v-card>
+        </template>
+        <template v-else>
+            <v-col cols="12">
+                <h4 class="text-h4 text-center font-weight-bold">List is empty</h4>
+            </v-col>
+        </template>
+    </v-row>
 </template>
 
 <script setup lang="ts">
+import AppLoader from '@/shared/ui/AppLoader/AppLoader.vue'
+import AppError from '@/shared/ui/AppError/AppError.vue'
 import MovieItem from './MovieItem.vue'
-import { useHomeStore } from '../model/store.ts'
+import { useHomeStore } from '@/entities/Movie/model/store.ts'
 import { storeToRefs } from 'pinia'
-import type {ISession} from '@/entities/Session';
+import type { ISession } from '@/entities/Session'
 
-const { sessions, movies } = storeToRefs(useHomeStore())
+const {
+    sessions,
+    filteredMovies,
+    isLoading,
+    isError
+} = storeToRefs(useHomeStore())
 
 const getMovieSessions = (movieId: number): ISession[] => {
     return sessions.value?.[movieId] || []
